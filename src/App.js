@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { db } from "./firebase"; // Import Firestore instance
 import "./App.css";
+import logo from "./assets/logo.png"; // Import your logo image
 
 function App() {
   const [lineInfo, setLineInfo] = useState(null);
@@ -54,6 +55,11 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* Logo */}
+      <header>
+        <img src={logo} alt="Logo" className="logo" />
+      </header>
+
       <div className="transparent-box">
         <h1 className="title">Line Information</h1>
         {loading && <p className="loading-text">Loading data...</p>}
@@ -61,7 +67,7 @@ function App() {
         {lineInfo && (
           <div>
             <p className="info-text">
-              <strong>Number of Clusters:</strong> {lineInfo.clusterCount}
+              <strong>Number of People:</strong> {lineInfo.clusterCount}
             </p>
             <p className="info-text">
               <strong>Last Updated:</strong> {lineInfo.timestamp}
